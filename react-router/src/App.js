@@ -1,6 +1,7 @@
 import { Link, Route, Routes, useLocation } from "react-router-dom";
 import "./App.css";
 import BookRoutes from "./BookRoutes";
+import MainLayout from "./MainLayout";
 import Book1 from "./pages/books/Book1";
 import BookCreate from "./pages/books/BookCreate";
 import BookId from "./pages/books/BookId";
@@ -13,27 +14,20 @@ import PrivateRoutes from "./PrivateRoute";
 
 function App() {
   const location = useLocation();
-  console.log(location);
+
+
 
   return (
     <>
-      <ul>
-        <li>
-          <Link to="/"> Home</Link>
-        </li>
-        <li>
-          <Link to="/books">Book List</Link>
-        </li>
-      </ul>
-
-      
 
       <Routes>
 
-      <Route element={<PrivateRoutes />}>
-          <Route path="/" element={<Home />} />          
-          <Route path="/books/*" element={<BookRoutes/>} />   { /*Routes nested inside route */}     
-      </Route>
+        <Route element={<PrivateRoutes />}>
+          <Route element={<MainLayout />} >
+            <Route path="/" element={<Home />} />          
+            <Route path="/books/*" element={<BookRoutes/>} />   { /*Routes nested inside route */}     
+          </Route>
+        </Route>
 
         <Route path="/login" element={<Login />} />       
         <Route path="*" element={<NotFound/>} />
