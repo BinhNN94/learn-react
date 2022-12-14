@@ -24,5 +24,9 @@ Main structures:
 6. hook:
 - useParams()
 - useSearchParams()
+- useNavigate()
+- useLocation()
+- useOutletContext()
 
 
+7. PrivateRoutes
